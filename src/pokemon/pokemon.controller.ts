@@ -6,6 +6,7 @@ import {
   Patch,
   Param,
   Delete,
+  Query,
   // HttpCode,
   // HttpStatus,
 } from '@nestjs/common';
@@ -14,6 +15,7 @@ import { CreatePokemonDto } from './dto/create-pokemon.dto';
 import { UpdatePokemonDto } from './dto/update-pokemon.dto';
 import { ParseMongoIdPipe } from 'src/common/pipes/parse-mongo-id/parse-mongo-id.pipe';
 import { Pokemon } from './entities/pokemon.entity';
+import { PaginationDto } from 'src/common/dto/pagination.dto';
 
 @Controller('pokemon')
 export class PokemonController {
@@ -26,8 +28,11 @@ export class PokemonController {
   }
 
   @Get()
-  findAll() {
-    return this.pokemonService.findAll();
+  async findAll(@Query() queryParameters: PaginationDto) {
+    // console.log(queryParameters instanceof PaginationDto);
+    // console.log(typeof queryParameters.limit);
+    // console.log(queryParameters);
+    return await this.pokemonService.findAll(queryParameters);
   }
 
   @Get(':term')
