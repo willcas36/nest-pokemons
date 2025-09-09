@@ -22,6 +22,14 @@ npm i -g @nestjs/cli;
 ```
 docker-compose up -d
 ```
-## Stack usado 
-* MongoDb
-* Nest
+
+http://localhost:3000/api/v2/seed 5. Ejecutar la semilla
+
+```
+yarn seed:run
+```
+
+## Stack usado
+
+- MongoDb
+- Nest

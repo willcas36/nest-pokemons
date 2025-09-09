@@ -1,14 +1,14 @@
-import { Inject, Injectable } from '@nestjs/common';
+import { Injectable } from '@nestjs/common';
 import { PokeResponse } from './interfaces/poke-response.interface';
-import { PokemonApiAdapter } from 'src/poke-api/poke-api.adapter';
 import { Pokemon } from 'src/pokemon/entities/pokemon.entity';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
+import { AxiosApiAdapter } from 'src/common/adapters/axios.adapter';
 
 @Injectable()
 export class SeedService {
   constructor(
-    public readonly http: PokemonApiAdapter,
+    public readonly http: AxiosApiAdapter,
     @InjectModel(Pokemon.name) private readonly pokemonModel: Model<Pokemon>,
   ) {}
   async executeSeed() {
