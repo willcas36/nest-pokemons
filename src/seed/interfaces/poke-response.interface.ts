@@ -1,4 +1,4 @@
-export interface PoleResponse {
+export interface PokeResponse {
     count:    number;
     next:     string;
     previous: null;

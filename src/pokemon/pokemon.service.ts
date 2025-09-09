@@ -84,4 +84,9 @@ export class PokemonService {
       'Cant update Polemon - Check server logs',
     );
   }
+  async seed(data: Pokemon[]) {
+    await this.pokemonModel.deleteMany({});
+    await this.pokemonModel.insertMany(data);
+    return 'Seed executed';
+  }
 }

@@ -13,6 +13,7 @@ import { PokemonService } from './pokemon.service';
 import { CreatePokemonDto } from './dto/create-pokemon.dto';
 import { UpdatePokemonDto } from './dto/update-pokemon.dto';
 import { ParseMongoIdPipe } from 'src/common/pipes/parse-mongo-id/parse-mongo-id.pipe';
+import { Pokemon } from './entities/pokemon.entity';
 
 @Controller('pokemon')
 export class PokemonController {
@@ -45,5 +46,9 @@ export class PokemonController {
   @Delete(':id')
   remove(@Param('id', ParseMongoIdPipe) id: string) {
     return this.pokemonService.remove(id);
+  }
+  @Post('seed')
+  seed(@Body() data: Pokemon[]) {
+    return this.pokemonService.seed(data);
   }
 }
